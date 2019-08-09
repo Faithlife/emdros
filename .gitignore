@@ -29,10 +29,6 @@ EMdF/json.out
 MQL/mql.c
 MQL/mql.h
 MQL/mql.out
-MQL/mql_get_query.cpp
-MQL/mql_lexer.cpp
-MQL/mql_parser.cpp
-MQL/mqlpars.h
 SWIG/csharp/*.cs
 SWIG/csharp/cssource/
 SWIG/csharp/CSharpSources.zip
