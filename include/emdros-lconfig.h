@@ -31,11 +31,11 @@
 #define LCONFIG__H__
 
 #ifndef USE_POSTGRESQL
-#define USE_POSTGRESQL 1
+#define USE_POSTGRESQL 0
 #endif
 
 #ifndef USE_MYSQL
-#define USE_MYSQL 1
+#define USE_MYSQL 0
 #endif
 
 #ifndef USE_SQLITE3
@@ -47,12 +47,14 @@
 #endif
 
 #ifndef LINUX
-#define LINUX 1
+#define LINUX 0
 #endif
 
 #ifndef SUN
 #define SUN 0
 #endif
+
+#define EMDF_DEBUG 1
 
 #ifndef DEFAULT_BACKEND_ENUM
 
@@ -82,7 +84,7 @@
  * otherwise, it must be non-zero.
  *@internal
  */
-#define USE_SYSTEM_SQLITE3 (0)
+#define USE_SYSTEM_SQLITE3 (1)
 #endif
 
 #ifndef USE_SYSTEM_ZLIB
