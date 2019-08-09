@@ -140,15 +140,9 @@ examples/HAL/hallexer.cpp
 examples/HAL/mqlhal
 harvest/templatelang.c
 harvest/templatelang.out
-harvest/templatelang_lexer.cpp
-harvest/templatelang_parser.cpp
-harvest/templatelangpars.h
 harvest/emdroslang.c
 harvest/emdroslang.out
-harvest/emdroslang_lexer.cpp
 harvest/emdroslang_lexer.h
-harvest/emdroslang_parser.cpp
-harvest/emdroslangpars.h
 include/emdros-version.h
 include/emdros-config.h.in
 include/sqlite_emdros.h
