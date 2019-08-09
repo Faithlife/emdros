@@ -44,7 +44,7 @@
 
 #if defined(USE_SQLITE3) && USE_SQLITE3
 extern "C" {
-	extern int mySQLite3OsFileExists(const char*); // Defined in sqlite3conn.cpp
+	extern int mySQLite3OsFileExists(const char*, const char*); // Defined in sqlite3conn.cpp
 }
 #endif
 
@@ -354,7 +354,7 @@ bool SQLite3EMdFDB::dropDatabase(const std::string& db_name)
 		// FIXME: This is a potential security risk, since now any file
 		// can be deleted which the using process has permissions
 		// to write to...
-		if (mySQLite3OsFileExists(db_name.c_str()) == 0) {
+		if (mySQLite3OsFileExists(nullptr, db_name.c_str()) == 0) {
 			DEBUG_X_IS_WRONG("SQLite3EMdFDB::dropDatabase", "database name did not exist.")
 				appendLocalError("Could not switch database context to '" + db_name + "'\n");
 			return false;
