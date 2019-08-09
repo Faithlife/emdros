@@ -156,7 +156,6 @@ harvest/emdroslangpars.h
 include/emdros-version.h
 include/emdros-config.h.in
 include/mqlpars.h
-include/pcre_config.h
 include/pcre_emdros.h
 include/prefix_emdros.h
 include/sqlite3_emdros.h
