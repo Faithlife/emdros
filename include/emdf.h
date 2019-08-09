@@ -144,7 +144,9 @@ typedef emdros_i32 monad_m;
 
 
 /* Silence compiler warnings... */
+#ifndef UNUSED
 #define UNUSED(V) ((void) (V))
+#endif
 
 /*
  * Emdros versions 
