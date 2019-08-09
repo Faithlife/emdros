@@ -235,15 +235,7 @@ tests/mqltry
 tests/erwtry
 tests/emdros_qdtry
 util/emdfxml_dtd.h
-importers/negraschema.h
-importers/pennlexer.cpp
-importers/pennparser.cpp
-importers/pennparser.h
 importers/pennparser.out
-importers/pennschema.h
-importers/plaintextschema.h
-importers/simplebibleschema.h
-importers/slashedtextschema.h
 win32/mingw-config.mak
 win32/emdros.nsi
 win32/lconfig.h.win32
