@@ -130,7 +130,7 @@
 #endif
 
 #ifndef USE_SYSTEM_SQLITE3
-#define USE_SYSTEM_SQLITE3 0
+#define USE_SYSTEM_SQLITE3 1
 #endif
 
 
