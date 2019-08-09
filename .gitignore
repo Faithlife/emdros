@@ -162,7 +162,6 @@ include/sqlite3_emdros.h
 include/sqlite_emdros.h
 include/stamp-h1
 include/zlib_emdros.h
-include/zconf.h
 install-sh
 install_mac.sh
 libtool
