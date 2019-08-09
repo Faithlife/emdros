@@ -527,8 +527,6 @@ void TargetFile::copy_file(std::ostream& fout,
 		fout << "#ifdef __cplusplus\nextern \"C\" {\n#endif\n";
 	}
 	
-	fout << "\n\n#line 1 \"" << source_filename << "\"\n";
-
         int line_count = 0;
 	std::ifstream fin;
 	std::string source_pathname = amalgamation_path_join("..", source_filename);
@@ -563,10 +561,8 @@ void TargetFile::copy_file(std::ostream& fout,
 				this->copy_file(fout, m_language, headers_available, header_path);
 
 				fout << "/**************** continuing " << source_filename << " where we left off *****************/\n";
-				fout << "\n\n#line " << line_count << " \"" << source_filename << "\"\n";
 			} else {
 				fout << "/**************** already included " << source_filename << " -- not including again *****************/\n";
-				fout << "\n\n#line " << line_count << " \"" << source_filename << "\"\n";
 			}
 		}
 	}
