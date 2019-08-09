@@ -19,7 +19,7 @@ TARGET_CPU = X64
 # Instead, the amalgamation is built and used.
 # ---------------------
 !IF "$(BUILD_FOR_DEVEL)" == ""
-BUILD_FOR_DEVEL = 1
+BUILD_FOR_DEVEL = 0
 !ENDIF
 
 
@@ -35,7 +35,7 @@ SQLITE3=1
 !IF "$TARGET_CPU" == "X64"
 # You may modify this...
 !IF "$(MYSQL)" == ""
-MYSQL=1
+MYSQL=0
 !ENDIF
 !ELSE
 # But not this...
@@ -94,8 +94,8 @@ DEBUGINFO=1
 # -----------------------------------------------
 
 !IF "$(EMDROS_ONLY)" == ""
-EMDROS_ONLY=0
-#EMDROS_ONLY=1
+#EMDROS_ONLY=0
+EMDROS_ONLY=1
 !ENDIF
 
 
@@ -106,11 +106,11 @@ EMDROS_ONLY=0
 # or MySQL (and ignore whichever isn't relevant)
 # ----------------------------------------------
 !IF "$(PGTOP)" == ""
-PGTOP=$(PROGRAMFILES)\PostgreSQL\8.4
+# PGTOP=$(PROGRAMFILES)\PostgreSQL\8.4
 !ENDIF
 
 !IF "$(MYSQLTOP)" == ""
-MYSQLTOP=C:\Program Files\MySQL\MySQL Connector C 6.1
+# MYSQLTOP=C:\Program Files\MySQL\MySQL Connector C 6.1
 !ENDIF
 
 
@@ -144,7 +144,7 @@ SQLITE3_NO_SYNC=1
 # Uncomment this line if you wish to compile the programs
 # which depend on wxWidgets
 !IF "$(WITH_WXWIN)" == ""
-WITH_WXWIN=yes
+WITH_WXWIN=no
 !ENDIF
 
 
@@ -214,7 +214,7 @@ NSISEXE=C:\Program Files (x86)\NSIS\makensis.exe
 
 
 # Set VERSION variable
-VERSION=@VERSION@
+VERSION=3.7.1
 
 
 # Don't touch this, or Emdros won't compile.
