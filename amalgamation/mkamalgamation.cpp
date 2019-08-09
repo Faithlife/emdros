@@ -542,7 +542,8 @@ void TargetFile::copy_file(std::ostream& fout,
 		std::string include_filename = amalgamation_match_include(line);
 
 		if (include_filename.empty()) {
-			fout << line << '\n';
+			if (!line.compare(0, 6, "#line ") == 0)
+				fout << line << '\n';
 		} else {
 			if (m_external_header_files.find(include_filename) != m_external_header_files.end()) {
 				fout << line << '\n';
