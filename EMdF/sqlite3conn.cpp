@@ -60,27 +60,39 @@ extern "C" int sqlite3_key(sqlite3 *pDB,
 #endif /* !USE_SYSTEM_SQLITE3 */
 #endif /* USE_SQLITE3 */
 
+void SplitVfsAndFilename(const char* filename, std::string& strVfsName, std::string& strFileName)
+{
+	// check for special VFS syntax (*vfs-name*filename)
+	if (filename[0] == '*')
+	{
+		// search for second asterisk
+		const char* pszVfsName = &filename[1];
+		const char* pszAsterisk = strchr(pszVfsName, '*');
+		if (pszAsterisk != NULL)
+		{
+			// copy VFS name (between asterisks) to buffer; use part after asterisks as file name
+			strVfsName.assign(pszVfsName, pszAsterisk - pszVfsName);
+			filename = pszAsterisk + 1;
+		}
+	}
+
+	strFileName = filename;
+}
 
 #if USE_SQLITE3
 extern "C" {
-#ifdef WIN32
-extern int sqlite3OsAccess(sqlite3_vfs *pVfs, const char *zFile, int flags, int *res);
-int mySQLite3OsFileExists(const char *zFile) {
+int mySQLite3OsFileExists(const char * pszVfs, const char *zFile) {
   int res = 0;
   int rc = SQLITE_OK;
-  sqlite3_vfs *pVfs = sqlite3_vfs_find(NULL); // Find first VFS on linked list inside of SQLite 3
+
+  sqlite3_vfs *pVfs = sqlite3_vfs_find(pszVfs); // Find first VFS on linked list inside of SQLite 3
   if (pVfs != NULL) {
-	  rc = pVfs->xAccess(pVfs, zFile, SQLITE_ACCESS_EXISTS, &res);
+    rc = pVfs->xAccess(pVfs, zFile, SQLITE_ACCESS_EXISTS, &res);
   } else {
-	  rc = SQLITE_ERROR;
+    rc = SQLITE_ERROR;
   }
   return (res && rc==SQLITE_OK);
 }
-#else
-	int mySQLite3OsFileExists(const char *zFilename) {
-		return access(zFilename, 0)==0;
-	}
-#endif // defined(WIN32)
 } // extern "C"
 #endif /* USE_SQLITE3 */
 
@@ -444,17 +456,23 @@ bool SQLite3EMdFConnection::useDatabaseSQLite3(const std::string& database_name,
 		// The "emdf" database is empty.
 		m_pDB = 0;
 	} else {
+		std::string strVfsName;
+		std::string strNewFileName;
+		SplitVfsAndFilename(database_name.c_str(), strVfsName, strNewFileName);
+		assert(!strNewFileName.empty());
+		const char* pszVfs = strVfsName.empty() ? nullptr : strVfsName.c_str();
+
 		bool bDoIt = false;
 		if (bIsCreating) {
 			bDoIt = true;
 		} else {
-			bDoIt = mySQLite3OsFileExists(database_name.c_str()) != 0;
+			bDoIt = mySQLite3OsFileExists(pszVfs, strNewFileName.c_str()) != 0;
 		}
 
 		if (bDoIt) {
 			int result = 0;
 #if USE_SYSTEM_SQLITE3
-			result = sqlite3_open(database_name.c_str(), &m_pDB);
+			result = sqlite3_open_v2(strNewFileName.c_str(), &m_pDB, bIsCreating ? SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE : SQLITE_OPEN_READWRITE, pszVfs);
 #else
 			if (key.length() == 0) { 
 				result = sqlite3_open(database_name.c_str(), &m_pDB);
