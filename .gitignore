@@ -155,7 +155,6 @@ harvest/emdroslang_parser.cpp
 harvest/emdroslangpars.h
 include/emdros-version.h
 include/emdros-config.h.in
-include/emdros_reserved_words.h
 include/mqlpars.h
 include/pcre_config.h
 include/pcre_emdros.h
