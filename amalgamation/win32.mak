@@ -3,6 +3,9 @@
 #
 # Makefile for Microsoft Visual C++ 2010 (or compatible)
 
+# uncomment this to build the Debug library
+# DEBUG = 1
+
 TOPSRCDIR = ..
 
 WIN32DIR = $(TOPSRCDIR)\win32
