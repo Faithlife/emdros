@@ -141,7 +141,7 @@ if test "x$HOSTISDARWIN" = "xyes"; then
   dnl macOS 10.14.
   elif test "x$DARWINMAJORVERSION" = "x18"; then
     AC_MSG_RESULT([10.14]) 
-    MACOS_VERSION_MIN="10.13"
+    MACOS_VERSION_MIN="10.11"
     MACOS_CFLAGS=""
   dnl macOS 10.15.
   elif test "x$DARWINMAJORVERSION" = "x19"; then
@@ -261,8 +261,8 @@ Please do so, and try again.])
   dnl Hence, if you need to build i386 binaries
   dnl for 10.13, you will need to build on macOS 10.13
   dnl or earlier.
-  elif test "x$MACOS_VERSION_MIN" = "x10.13"; then
-    AC_MSG_RESULT([10.13]) 
+  elif test "x$MACOS_VERSION_MIN" = "x10.11"; then
+    AC_MSG_RESULT([10.11]) 
     MACOS_ARCH_FLAGS="-arch x86_64"
   dnl macOS 10.14: macOS 10.14 doesn't support i386
   elif test "x$MACOS_VERSION_MIN" = "x10.14"; then
