@@ -1,3 +1,77 @@
+============ 3.7.4 ============
+
+2021-10-20 Ulrik Sandborg-Petersen
+
+	* configure.ac, debian/changelog: Bump to 3.7.4.
+
+	* src/Makefile.am, src/qrytool/Makefile.am: Ditribute eqtc on the Mac.
+
+============ 3.7.3 ============
+
+2020-11-24 Ulrik Sandborg-Petersen
+
+	* tests/qa2h.py: Fix a Python3 compatibility in making
+	tests/mqlqa.h and tests/bptqa.h.
+
+	* Fix Python 3 compatibility in mqltry and bpttry.
+
+	modified:   tests/Makefile.am
+	modified:   tests/bptqa2h.py
+	modified:   tests/qa2h.py
+
+2020-06-03 Ulrik Sandborg-Petersen
+
+	* configure.ac, debian/changelog: Bump to 3.7.3.
+
+	* sqlite3/: Update to SQLite3 version 3.32.1 from 2020-05-25.
+
+	modified:   sqlite3/sqlite3_emdros.1
+	modified:   sqlite3/src/shell.c
+	modified:   sqlite3/src/sqlite3.c
+	modified:   sqlite3/src/sqlite3.h
+	modified:   sqlite3/src/sqlite3ext.h
+
+	* sqlite3/tool/: Update to lemon.c and lempar.c from SQLite
+	version 3.32.1.
+
+============ 3.7.2 ============
+
+2020-05-13 Ulrik Sandborg-Petersen
+
+	* Update build scripts for Python 3 compatibility:
+
+	modified:   ChangeLog
+	modified:   doc/progref/buildhtb.py
+	modified:   generate_extrafiles.py.in
+	modified:   tests/bptqa2h.py
+	modified:   tests/file2h.py
+	modified:   tests/qa2h.py
+
+2019-07-12 Ulrik Sandborg-Petersen
+
+	* tests/emdftry.cpp: Test for more test cases in testing
+	split_string() from libemdf's string_func.cpp: We have so far
+	neglected to test that it does the right thing when a string
+	starts or ends with one of the split characters.  In fact, it was
+	testing this, and getting the result wrong.
+
+	* EMdF/string_func.cpp: Fix bugs in split_string(): When the input
+	contains only splitstring chars, return a list containing the
+	empty string. When the input begins with one or more splitchars,
+	prepend the empty string. When the input ends with one or more
+	splitchars, and does not consist solely of splitchar chars, also
+	append the empty string.
+
+	* tests/emdftry.cpp: Also test for the case that the input only
+	consists of chars from the splitchars string.
+
+	* EMdF/string_func.cpp: Fix bug occurring when the input consists
+	solely of chars from the splitchars string.
+
+2019-06-03 Ulrik Sandborg-Petersen
+
+	* configure.ac, debian/changelog: Bump to 3.7.2
+
 ============ 3.7.1 ============
 
 2019-06-03 Ulrik Sandborg-Petersen
