@@ -44,7 +44,15 @@ AC_ARG_ENABLE(universal_binary,
   UNIVERSAL_BINARY=no)
 
 
-
+dnl --enable-arm
+AC_ARG_ENABLE(arm, 
+[  --enable-arm     builds for arm64
+  --disable-arm    builds for x86_64 (default)],
+[case "$enableval" in
+       no) ENABLE_ARM=no ;;
+       *)  ENABLE_ARM=yes ;;
+ esac],
+  ENABLE_ARM=no)
 
 
 dnl MACCPU and BIG_ENDIAN
@@ -58,6 +66,8 @@ if test x$HOSTISDARWIN = xyes; then
   else
     if test x$HOSTISPOWERPC = xyes; then
       MACCPU=PPC
+    elif test x$ENABLE_ARM = xyes; then
+      MACCPU=Apple
     else
       MACCPU=Intel
     fi
@@ -82,7 +92,11 @@ if test "x$HOSTISDARWIN" = "xyes"; then
   ISYSROOT="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk"
   MACOS_VERSION_MIN="-mmacosx-version-min=10.14"
 
-  MACOS_ARCH="-arch x86_64"
+  if test "x$ENABLE_ARM" = "xyes"; then
+    MACOS_ARCH="-arch arm64"
+  else
+    MACOS_ARCH="-arch x86_64"
+  fi
 
   MACOS_CFLAGS=" $MACOS_ARCH $MACOS_VERSION_MIN $ISYSROOT"
   MACOS_CXXFLAGS=" $MACOS_ARCH $MACOS_VERSION_MIN $ISYSROOT"

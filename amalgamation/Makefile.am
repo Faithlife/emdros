@@ -64,7 +64,7 @@ emdros_c.h: amalgamation_made.txt
 #	touch amalgamation_made.txt
 
 amalgamation_made.txt: mkamalgamation amalgamation.xml
-	./mkamalgamation amalgamation.xml
+	./mkamalgamation-x64 amalgamation.xml
 	touch amalgamation_made.txt
 
 

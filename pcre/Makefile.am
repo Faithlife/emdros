@@ -69,7 +69,7 @@ AM_CFLAGS = @DEBUGFLAG@ @ADDITIONAL_CFLAGS@
 pcre_compile.c: pcre_chartables.c
 
 pcre_chartables.c: $(srcdir)/../include/pcre_config.h  dftables
-	./dftables pcre_chartables.c
+	./dftables-x64 pcre_chartables.c
 
 #dftables$(EXEEXT):
 #	$(COMPILE) $(CFLAGS) -c dftables.c
