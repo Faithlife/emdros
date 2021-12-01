@@ -78,84 +78,14 @@ AC_SUBST(DARWIN_LDFLAGS)
 AC_SUBST(DARWIN_CXXFLAGS)
 
 if test "x$HOSTISDARWIN" = "xyes"; then
-  AC_MSG_CHECKING([Current macOS build version (for setting macOS minimum version)...])
+  dnl Use the 11.3 SDK with a minimum macOS target of 10.14.
+  ISYSROOT="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk"
+  MACOS_VERSION_MIN="-mmacosx-version-min=10.14"
 
-  ISYSROOT=""
-  dnl macOS 10.4:
-  if test "x$DARWINMAJORVERSION" = "x8"; then
-    AC_MSG_RESULT([10.4])
-    MACOS_VERSION_MIN="10.4"
-    # SQLite3 must have the -DSQLITE_WITHOUT_ZONEMALLOC when compiling with macOS minimum version < 10.5.
-    MACOS_CFLAGS="-DSQLITE_WITHOUT_ZONEMALLOC"
-    ISYSROOT="-isysroot /Developer/SDKs/MacOSX10.4u.sdk"
-  dnl macOS 10.5: XCode can't compile 64-bit code
-  elif test "x$DARWINMAJORVERSION" = "x9"; then
-    AC_MSG_RESULT([10.5])
-    MACOS_VERSION_MIN="10.4"
-    # SQLite3 must have the -DSQLITE_WITHOUT_ZONEMALLOC when compiling with macOS minimum version < 10.5.
-    MACOS_CFLAGS="-DSQLITE_WITHOUT_ZONEMALLOC"
-    ISYSROOT="-isysroot /Developer/SDKs/MacOSX10.4u.sdk"
-  dnl macOS 10.6
-  elif test "x$DARWINMAJORVERSION" = "x10"; then
-    AC_MSG_RESULT([10.6]) 
-    MACOS_VERSION_MIN="10.4"
-    # SQLite3 must have the -DSQLITE_WITHOUT_ZONEMALLOC when compiling with macOS minimum version < 10.5.
-    MACOS_CFLAGS="-DSQLITE_WITHOUT_ZONEMALLOC"
-    ISYSROOT="-isysroot /Developer/SDKs/MacOSX10.4u.sdk"
-  dnl macOS 10.7: XCode can't do PPC binaries
-  elif test "x$DARWINMAJORVERSION" = "x11"; then
-    AC_MSG_RESULT([10.7]) 
-    MACOS_VERSION_MIN="10.6"
-    MACOS_CFLAGS=""
-    ISYSROOT="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk"
-  dnl macOS 10.8: XCode can't do PPC binaries
-  elif test "x$DARWINMAJORVERSION" = "x12"; then
-    AC_MSG_RESULT([10.8]) 
-    MACOS_VERSION_MIN="10.7"
-    MACOS_CFLAGS=""
-  dnl macOS 10.8: XCode can't do PPC binaries
-  elif test "x$DARWINMAJORVERSION" = "x13"; then
-    AC_MSG_RESULT([10.9]) 
-    MACOS_VERSION_MIN="10.8"
-    MACOS_CFLAGS=""
-  dnl macOS 10.10.
-  elif test "x$DARWINMAJORVERSION" = "x14"; then
-    AC_MSG_RESULT([10.10]) 
-    MACOS_VERSION_MIN="10.9"
-    MACOS_CFLAGS=""
-  dnl macOS 10.11.
-  elif test "x$DARWINMAJORVERSION" = "x15"; then
-    AC_MSG_RESULT([10.11]) 
-    MACOS_VERSION_MIN="10.10"
-    MACOS_CFLAGS=""
-  dnl macOS 10.12.
-  elif test "x$DARWINMAJORVERSION" = "x16"; then
-    AC_MSG_RESULT([10.12]) 
-    MACOS_VERSION_MIN="10.11"
-    MACOS_CFLAGS=""
-  dnl macOS 10.13.
-  elif test "x$DARWINMAJORVERSION" = "x17"; then
-    AC_MSG_RESULT([10.13]) 
-    MACOS_VERSION_MIN="10.12"
-    MACOS_CFLAGS=""
-  dnl macOS 10.14.
-  elif test "x$DARWINMAJORVERSION" = "x18"; then
-    AC_MSG_RESULT([10.14]) 
-    MACOS_VERSION_MIN="10.11"
-    MACOS_CFLAGS=""
-  dnl macOS 10.15.
-  elif test "x$DARWINMAJORVERSION" = "x19"; then
-    AC_MSG_RESULT([10.15]) 
-    MACOS_VERSION_MIN="10.14"
-    MACOS_CFLAGS=""
-  else
-    AC_MSG_RESULT([unknown... Using 10.16.]) 
-    MACOS_VERSION_MIN="10.15"
-    MACOS_CFLAGS=""
-  fi
+  MACOS_ARCH="-arch x86_64"
 
-  MACOS_CFLAGS=" -mmacosx-version-min=$MACOS_VERSION_MIN  $MACOS_CFLAGS $ISYSROOT"
-  MACOS_CXXFLAGS=" -mmacosx-version-min=$MACOS_VERSION_MIN $ISYSROOT"
+  MACOS_CFLAGS=" $MACOS_ARCH $MACOS_VERSION_MIN $ISYSROOT"
+  MACOS_CXXFLAGS=" $MACOS_ARCH $MACOS_VERSION_MIN $ISYSROOT"
 
   CFLAGS="$CFLAGS $MACOS_CFLAGS"
   CXXFLAGS="$CXXFLAGS $MACOS_CXXFLAGS"
