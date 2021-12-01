@@ -66,7 +66,11 @@ EmdrosProgRefGuide.tex: config.py buildhtb.py \
 	cd $(srcdir); python $(srcdir)/buildhtb.py --latex
 
 EmdrosProgRefGuide.pdf: EmdrosProgRefGuide.tex
-	$(PROG_PDFLATEX) EmdrosProgRefGuide.tex > pdflatex-log.txt 2>&1
+	echo "pdflatex hangs. Skip it."
+	touch EmdrosProgRefGuide.pdf
+
+#EmdrosProgRefGuide.pdf: EmdrosProgRefGuide.tex
+#	$(PROG_PDFLATEX) EmdrosProgRefGuide.tex > pdflatex-log.txt 2>&1
 
 
 DISTCLEANFILES = \

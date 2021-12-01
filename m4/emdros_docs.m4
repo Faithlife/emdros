@@ -12,7 +12,7 @@ if test "x$PROG_PDFLATEX" = "xno"; then
    DO_PDFLATEX="no"
 else
    AC_MSG_RESULT([yes.])
-   DO_PDFLATEX="yes"
+   DO_PDFLATEX="no"
 fi
 
 AM_CONDITIONAL(DO_PROG_PDFLATEX, test "x$DO_PDFLATEX" = "xyes")
@@ -30,7 +30,7 @@ if test "x$PROG_GROFF" = "xno"; then
    DO_GROFF="no"
 else
    AC_MSG_RESULT([yes.])
-   DO_GROFF="yes"
+   DO_GROFF="no"
 fi
 
 AM_CONDITIONAL(DO_PROG_GROFF, test "x$DO_GROFF" = "xyes")
@@ -47,7 +47,7 @@ if test "x$PROG_ZIP" = "xno"; then
    DO_ZIP="no"
 else
    AC_MSG_RESULT([yes.])
-   DO_ZIP="yes"
+   DO_ZIP="no"
 fi
 
 AM_CONDITIONAL(DO_PROG_ZIP, test "x$DO_ZIP" = "xyes")
