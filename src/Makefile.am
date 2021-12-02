@@ -116,5 +116,5 @@ AM_CXXFLAGS = @CXXFLAGS@ @DEBUGFLAG@ @SUN_CXXFLAGS@ @DARWIN_CXXFLAGS@ \
 
 macdist:
 	cp $(bin_PROGRAMS) $(MACDISTDIR)/development/bin
-	make -C qrytool macdist MACDISTDIR=../$(MACDISTDIR)
+	cd qrytool; make macdist MACDISTDIR=../../$(MACDISTDIR); cd ..
 
