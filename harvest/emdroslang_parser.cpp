@@ -160,6 +160,7 @@ typedef union {
 #define EmdroslangParserCTX_STORE
 #define TMPLGYYNSTATE             103
 #define TMPLGYYNRULE              108
+#define TMPLGYYNRULE_WITH_ACTION  107
 #define TMPLGYYNTOKEN             46
 #define TMPLGYY_MAX_SHIFT         102
 #define TMPLGYY_MIN_SHIFTREDUCE   183
@@ -879,7 +880,7 @@ static void tmplgyy_destructor(
 {
 #line 40 "./emdroslang.yxx"
  (tmplgyypminor->tmplgyy0)->clear(); delete((tmplgyypminor->tmplgyy0)); 
-#line 883 "./emdroslang.c"
+#line 884 "./emdroslang.c"
 }
       break;
     case 46: /* top_value */
@@ -888,21 +889,21 @@ static void tmplgyy_destructor(
 {
 #line 56 "./emdroslang.yxx"
  delete((tmplgyypminor->tmplgyy70)); 
-#line 892 "./emdroslang.c"
+#line 893 "./emdroslang.c"
 }
       break;
     case 49: /* stylesheet */
 {
 #line 74 "./emdroslang.yxx"
  delete((tmplgyypminor->tmplgyy78)); 
-#line 899 "./emdroslang.c"
+#line 900 "./emdroslang.c"
 }
       break;
     case 50: /* function_def */
 {
 #line 150 "./emdroslang.yxx"
 delete((tmplgyypminor->tmplgyy169));
-#line 906 "./emdroslang.c"
+#line 907 "./emdroslang.c"
 }
       break;
     case 51: /* stylesheet_kind */
@@ -912,7 +913,7 @@ delete((tmplgyypminor->tmplgyy169));
 {
 #line 82 "./emdroslang.yxx"
  deleteToken((tmplgyypminor->tmplgyy0)); 
-#line 916 "./emdroslang.c"
+#line 917 "./emdroslang.c"
 }
       break;
     case 54: /* json_object */
@@ -921,7 +922,7 @@ delete((tmplgyypminor->tmplgyy169));
 {
 #line 121 "./emdroslang.yxx"
  delete((tmplgyypminor->tmplgyy90)); 
-#line 925 "./emdroslang.c"
+#line 926 "./emdroslang.c"
 }
       break;
     case 57: /* json_object_key_value_list */
@@ -929,21 +930,21 @@ delete((tmplgyypminor->tmplgyy169));
 {
 #line 126 "./emdroslang.yxx"
 delete((tmplgyypminor->tmplgyy163)); 
-#line 933 "./emdroslang.c"
+#line 934 "./emdroslang.c"
 }
       break;
     case 59: /* json_value_list */
 {
 #line 143 "./emdroslang.yxx"
  delete((tmplgyypminor->tmplgyy159)); 
-#line 940 "./emdroslang.c"
+#line 941 "./emdroslang.c"
 }
       break;
     case 60: /* function_signature */
 {
 #line 155 "./emdroslang.yxx"
 delete((tmplgyypminor->tmplgyy148));
-#line 947 "./emdroslang.c"
+#line 948 "./emdroslang.c"
 }
       break;
     case 61: /* function_body */
@@ -967,14 +968,14 @@ delete((tmplgyypminor->tmplgyy148));
 {
 #line 199 "./emdroslang.yxx"
 delete((tmplgyypminor->tmplgyy137));
-#line 971 "./emdroslang.c"
+#line 972 "./emdroslang.c"
 }
       break;
     case 62: /* fully_qualified_function_name */
 {
 #line 160 "./emdroslang.yxx"
 delete((tmplgyypminor->tmplgyy167));
-#line 978 "./emdroslang.c"
+#line 979 "./emdroslang.c"
 }
       break;
     case 63: /* opt_formal_parameter_list */
@@ -983,7 +984,7 @@ delete((tmplgyypminor->tmplgyy167));
 {
 #line 180 "./emdroslang.yxx"
 delete((tmplgyypminor->tmplgyy154));
-#line 987 "./emdroslang.c"
+#line 988 "./emdroslang.c"
 }
       break;
     case 69: /* simple_statement */
@@ -992,7 +993,7 @@ delete((tmplgyypminor->tmplgyy154));
 delete((tmplgyypminor->tmplgyy137));
 #line 256 "./emdroslang.yxx"
 delete((tmplgyypminor->tmplgyy137));
-#line 996 "./emdroslang.c"
+#line 997 "./emdroslang.c"
 }
       break;
     case 83: /* expression */
@@ -1012,7 +1013,7 @@ delete((tmplgyypminor->tmplgyy137));
 {
 #line 353 "./emdroslang.yxx"
  delete((tmplgyypminor->tmplgyy156)); 
-#line 1016 "./emdroslang.c"
+#line 1017 "./emdroslang.c"
 }
       break;
     case 92: /* expression2 */
@@ -1021,7 +1022,7 @@ delete((tmplgyypminor->tmplgyy137));
  delete((tmplgyypminor->tmplgyy156)); 
 #line 437 "./emdroslang.yxx"
 
-#line 1025 "./emdroslang.c"
+#line 1026 "./emdroslang.c"
 }
       break;
 /********* End destructor definitions *****************************************/
@@ -1147,15 +1148,18 @@ static TMPLGYYACTIONTYPE tmplgyy_find_shift_action(
   do{
     i = tmplgyy_shift_ofst[stateno];
     assert( i>=0 );
-    /* assert( i+TMPLGYYNTOKEN<=(int)TMPLGYY_NLOOKAHEAD ); */
+    assert( i<=TMPLGYY_ACTTAB_COUNT );
+    assert( i+TMPLGYYNTOKEN<=(int)TMPLGYY_NLOOKAHEAD );
     assert( iLookAhead!=TMPLGYYNOCODE );
     assert( iLookAhead < TMPLGYYNTOKEN );
     i += iLookAhead;
-    if( i>=TMPLGYY_NLOOKAHEAD || tmplgyy_lookahead[i]!=iLookAhead ){
+    assert( i<(int)TMPLGYY_NLOOKAHEAD );
+    if( tmplgyy_lookahead[i]!=iLookAhead ){
 #ifdef TMPLGYYFALLBACK
       TMPLGYYCODETYPE iFallback;            /* Fallback token */
-      if( iLookAhead<sizeof(tmplgyyFallback)/sizeof(tmplgyyFallback[0])
-             && (iFallback = tmplgyyFallback[iLookAhead])!=0 ){
+      assert( iLookAhead<sizeof(tmplgyyFallback)/sizeof(tmplgyyFallback[0]) );
+      iFallback = tmplgyyFallback[iLookAhead];
+      if( iFallback!=0 ){
 #ifndef NDEBUG
         if( tmplgyyTraceFILE ){
           fprintf(tmplgyyTraceFILE, "%sFALLBACK %s => %s\n",
@@ -1170,16 +1174,8 @@ static TMPLGYYACTIONTYPE tmplgyy_find_shift_action(
 #ifdef TMPLGYYWILDCARD
       {
         int j = i - iLookAhead + TMPLGYYWILDCARD;
-        if( 
-#if TMPLGYY_SHIFT_MIN+TMPLGYYWILDCARD<0
-          j>=0 &&
-#endif
-#if TMPLGYY_SHIFT_MAX+TMPLGYYWILDCARD>=TMPLGYY_ACTTAB_COUNT
-          j<TMPLGYY_ACTTAB_COUNT &&
-#endif
-          j<(int)(sizeof(tmplgyy_lookahead)/sizeof(tmplgyy_lookahead[0])) &&
-          tmplgyy_lookahead[j]==TMPLGYYWILDCARD && iLookAhead>0
-        ){
+        assert( j<(int)(sizeof(tmplgyy_lookahead)/sizeof(tmplgyy_lookahead[0])) );
+        if( tmplgyy_lookahead[j]==TMPLGYYWILDCARD && iLookAhead>0 ){
 #ifndef NDEBUG
           if( tmplgyyTraceFILE ){
             fprintf(tmplgyyTraceFILE, "%sWILDCARD %s => %s\n",
@@ -1193,6 +1189,7 @@ static TMPLGYYACTIONTYPE tmplgyy_find_shift_action(
 #endif /* TMPLGYYWILDCARD */
       return tmplgyy_default[stateno];
     }else{
+      assert( i>=0 && i<sizeof(tmplgyy_action)/sizeof(tmplgyy_action[0]) );
       return tmplgyy_action[i];
     }
   }while(1);
@@ -1568,12 +1565,15 @@ static TMPLGYYACTIONTYPE tmplgyy_reduce(
   if( tmplgyyTraceFILE && tmplgyyruleno<(int)(sizeof(tmplgyyRuleName)/sizeof(tmplgyyRuleName[0])) ){
     tmplgyysize = tmplgyyRuleInfoNRhs[tmplgyyruleno];
     if( tmplgyysize ){
-      fprintf(tmplgyyTraceFILE, "%sReduce %d [%s], go to state %d.\n",
+      fprintf(tmplgyyTraceFILE, "%sReduce %d [%s]%s, pop back to state %d.\n",
         tmplgyyTracePrompt,
-        tmplgyyruleno, tmplgyyRuleName[tmplgyyruleno], tmplgyymsp[tmplgyysize].stateno);
+        tmplgyyruleno, tmplgyyRuleName[tmplgyyruleno],
+        tmplgyyruleno<TMPLGYYNRULE_WITH_ACTION ? "" : " without external action",
+        tmplgyymsp[tmplgyysize].stateno);
     }else{
-      fprintf(tmplgyyTraceFILE, "%sReduce %d [%s].\n",
-        tmplgyyTracePrompt, tmplgyyruleno, tmplgyyRuleName[tmplgyyruleno]);
+      fprintf(tmplgyyTraceFILE, "%sReduce %d [%s]%s.\n",
+        tmplgyyTracePrompt, tmplgyyruleno, tmplgyyRuleName[tmplgyyruleno],
+        tmplgyyruleno<TMPLGYYNRULE_WITH_ACTION ? "" : " without external action");
     }
   }
 #endif /* NDEBUG */
@@ -2506,11 +2506,10 @@ void EmdroslangParser(
 */
 int EmdroslangParserFallback(int iToken){
 #ifdef TMPLGYYFALLBACK
-  if( iToken<(int)(sizeof(tmplgyyFallback)/sizeof(tmplgyyFallback[0])) ){
-    return tmplgyyFallback[iToken];
-  }
+  assert( iToken<(int)(sizeof(tmplgyyFallback)/sizeof(tmplgyyFallback[0])) );
+  return tmplgyyFallback[iToken];
 #else
   (void)iToken;
-#endif
   return 0;
+#endif
 }

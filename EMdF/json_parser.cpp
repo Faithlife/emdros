@@ -162,6 +162,7 @@ typedef union {
 #define JSONParserCTX_STORE
 #define JSONYYNSTATE             12
 #define JSONYYNRULE              23
+#define JSONYYNRULE_WITH_ACTION  23
 #define JSONYYNTOKEN             12
 #define JSONYY_MAX_SHIFT         11
 #define JSONYY_MIN_SHIFTREDUCE   32
@@ -576,7 +577,7 @@ static void jsonyy_destructor(
 		deleteToken((jsonyypminor->jsonyy0)); 
 	}
 
-#line 580 "./json.c"
+#line 581 "./json.c"
 }
       break;
     case 12: /* top_value */
@@ -584,7 +585,7 @@ static void jsonyy_destructor(
 {
 #line 77 "./json.yxx"
  delete((jsonyypminor->jsonyy18)); 
-#line 588 "./json.c"
+#line 589 "./json.c"
 }
       break;
     case 14: /* json_object */
@@ -592,7 +593,7 @@ static void jsonyy_destructor(
 {
 #line 90 "./json.yxx"
 delete((jsonyypminor->jsonyy18)); 
-#line 596 "./json.c"
+#line 597 "./json.c"
 }
       break;
     case 16: /* json_boolean */
@@ -602,7 +603,7 @@ delete((jsonyypminor->jsonyy18));
 {
 #line 147 "./json.yxx"
 delete((jsonyypminor->jsonyy18));
-#line 606 "./json.c"
+#line 607 "./json.c"
 }
       break;
     case 20: /* json_key_value_list */
@@ -610,21 +611,21 @@ delete((jsonyypminor->jsonyy18));
 {
 #line 103 "./json.yxx"
 delete((jsonyypminor->jsonyy31));
-#line 614 "./json.c"
+#line 615 "./json.c"
 }
       break;
     case 21: /* opt_comma */
 {
 #line 97 "./json.yxx"
 ;
-#line 621 "./json.c"
+#line 622 "./json.c"
 }
       break;
     case 23: /* json_value_list */
 {
 #line 127 "./json.yxx"
 delete((jsonyypminor->jsonyy39)); 
-#line 628 "./json.c"
+#line 629 "./json.c"
 }
       break;
 /********* End destructor definitions *****************************************/
@@ -750,15 +751,18 @@ static JSONYYACTIONTYPE jsonyy_find_shift_action(
   do{
     i = jsonyy_shift_ofst[stateno];
     assert( i>=0 );
-    /* assert( i+JSONYYNTOKEN<=(int)JSONYY_NLOOKAHEAD ); */
+    assert( i<=JSONYY_ACTTAB_COUNT );
+    assert( i+JSONYYNTOKEN<=(int)JSONYY_NLOOKAHEAD );
     assert( iLookAhead!=JSONYYNOCODE );
     assert( iLookAhead < JSONYYNTOKEN );
     i += iLookAhead;
-    if( i>=JSONYY_NLOOKAHEAD || jsonyy_lookahead[i]!=iLookAhead ){
+    assert( i<(int)JSONYY_NLOOKAHEAD );
+    if( jsonyy_lookahead[i]!=iLookAhead ){
 #ifdef JSONYYFALLBACK
       JSONYYCODETYPE iFallback;            /* Fallback token */
-      if( iLookAhead<sizeof(jsonyyFallback)/sizeof(jsonyyFallback[0])
-             && (iFallback = jsonyyFallback[iLookAhead])!=0 ){
+      assert( iLookAhead<sizeof(jsonyyFallback)/sizeof(jsonyyFallback[0]) );
+      iFallback = jsonyyFallback[iLookAhead];
+      if( iFallback!=0 ){
 #ifndef NDEBUG
         if( jsonyyTraceFILE ){
           fprintf(jsonyyTraceFILE, "%sFALLBACK %s => %s\n",
@@ -773,16 +777,8 @@ static JSONYYACTIONTYPE jsonyy_find_shift_action(
 #ifdef JSONYYWILDCARD
       {
         int j = i - iLookAhead + JSONYYWILDCARD;
-        if( 
-#if JSONYY_SHIFT_MIN+JSONYYWILDCARD<0
-          j>=0 &&
-#endif
-#if JSONYY_SHIFT_MAX+JSONYYWILDCARD>=JSONYY_ACTTAB_COUNT
-          j<JSONYY_ACTTAB_COUNT &&
-#endif
-          j<(int)(sizeof(jsonyy_lookahead)/sizeof(jsonyy_lookahead[0])) &&
-          jsonyy_lookahead[j]==JSONYYWILDCARD && iLookAhead>0
-        ){
+        assert( j<(int)(sizeof(jsonyy_lookahead)/sizeof(jsonyy_lookahead[0])) );
+        if( jsonyy_lookahead[j]==JSONYYWILDCARD && iLookAhead>0 ){
 #ifndef NDEBUG
           if( jsonyyTraceFILE ){
             fprintf(jsonyyTraceFILE, "%sWILDCARD %s => %s\n",
@@ -796,6 +792,7 @@ static JSONYYACTIONTYPE jsonyy_find_shift_action(
 #endif /* JSONYYWILDCARD */
       return jsonyy_default[stateno];
     }else{
+      assert( i>=0 && i<sizeof(jsonyy_action)/sizeof(jsonyy_action[0]) );
       return jsonyy_action[i];
     }
   }while(1);
@@ -1001,12 +998,15 @@ static JSONYYACTIONTYPE jsonyy_reduce(
   if( jsonyyTraceFILE && jsonyyruleno<(int)(sizeof(jsonyyRuleName)/sizeof(jsonyyRuleName[0])) ){
     jsonyysize = jsonyyRuleInfoNRhs[jsonyyruleno];
     if( jsonyysize ){
-      fprintf(jsonyyTraceFILE, "%sReduce %d [%s], go to state %d.\n",
+      fprintf(jsonyyTraceFILE, "%sReduce %d [%s]%s, pop back to state %d.\n",
         jsonyyTracePrompt,
-        jsonyyruleno, jsonyyRuleName[jsonyyruleno], jsonyymsp[jsonyysize].stateno);
+        jsonyyruleno, jsonyyRuleName[jsonyyruleno],
+        jsonyyruleno<JSONYYNRULE_WITH_ACTION ? "" : " without external action",
+        jsonyymsp[jsonyysize].stateno);
     }else{
-      fprintf(jsonyyTraceFILE, "%sReduce %d [%s].\n",
-        jsonyyTracePrompt, jsonyyruleno, jsonyyRuleName[jsonyyruleno]);
+      fprintf(jsonyyTraceFILE, "%sReduce %d [%s]%s.\n",
+        jsonyyTracePrompt, jsonyyruleno, jsonyyRuleName[jsonyyruleno],
+        jsonyyruleno<JSONYYNRULE_WITH_ACTION ? "" : " without external action");
     }
   }
 #endif /* NDEBUG */
@@ -1469,11 +1469,10 @@ void JSONParser(
 */
 int JSONParserFallback(int iToken){
 #ifdef JSONYYFALLBACK
-  if( iToken<(int)(sizeof(jsonyyFallback)/sizeof(jsonyyFallback[0])) ){
-    return jsonyyFallback[iToken];
-  }
+  assert( iToken<(int)(sizeof(jsonyyFallback)/sizeof(jsonyyFallback[0])) );
+  return jsonyyFallback[iToken];
 #else
   (void)iToken;
-#endif
   return 0;
+#endif
 }

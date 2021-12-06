@@ -96,7 +96,7 @@
 #endif
 
 #ifndef EMDROS_VERSION
-#define EMDROS_VERSION "3.7.1"
+#define EMDROS_VERSION "3.7.3"
 #endif
 
 #ifndef EMDROS_VERSION_MAJOR
@@ -108,7 +108,7 @@
 #endif
 
 #ifndef EMDROS_VERSION_RELEASE
-#define EMDROS_VERSION_RELEASE (1)
+#define EMDROS_VERSION_RELEASE (3)
 #endif
 
 

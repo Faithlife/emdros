@@ -214,7 +214,7 @@ NSISEXE=C:\Program Files (x86)\NSIS\makensis.exe
 
 
 # Set VERSION variable
-VERSION=3.7.1
+VERSION=3.7.3
 
 
 # Don't touch this, or Emdros won't compile.

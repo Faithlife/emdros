@@ -231,6 +231,7 @@ typedef union {
 #define MQLParserCTX_STORE
 #define MQLYYNSTATE             437
 #define MQLYYNRULE              396
+#define MQLYYNRULE_WITH_ACTION  396
 #define MQLYYNTOKEN             131
 #define MQLYY_MAX_SHIFT         436
 #define MQLYY_MIN_SHIFTREDUCE   772
@@ -1728,7 +1729,7 @@ static void mqlyy_destructor(
 {
 #line 67 "./mql.yxx"
  deleteToken((mqlyypminor->mqlyy0)); UNUSED(pEE); 
-#line 1732 "./mql.c"
+#line 1733 "./mql.c"
 }
       break;
     case 131: /* statement */
@@ -1782,7 +1783,7 @@ static void mqlyy_destructor(
 {
 #line 89 "./mql.yxx"
 delete((mqlyypminor->mqlyy568));
-#line 1786 "./mql.c"
+#line 1787 "./mql.c"
 }
       break;
     case 181: /* database_name */
@@ -1805,7 +1806,7 @@ delete((mqlyypminor->mqlyy568));
 {
 #line 154 "./mql.yxx"
  deleteToken((mqlyypminor->mqlyy0)); 
-#line 1809 "./mql.c"
+#line 1810 "./mql.c"
 }
       break;
     case 184: /* opt_DATABASE */
@@ -1824,7 +1825,7 @@ delete((mqlyypminor->mqlyy568));
 {
 #line 182 "./mql.yxx"
 ;
-#line 1828 "./mql.c"
+#line 1829 "./mql.c"
 }
       break;
     case 186: /* opt_ANALYZE */
@@ -1836,21 +1837,21 @@ delete((mqlyypminor->mqlyy568));
 {
 #line 200 "./mql.yxx"
 ;
-#line 1840 "./mql.c"
+#line 1841 "./mql.c"
 }
       break;
     case 192: /* opt_range_type */
 {
 #line 265 "./mql.yxx"
 ;
-#line 1847 "./mql.c"
+#line 1848 "./mql.c"
 }
       break;
     case 193: /* opt_monad_uniqueness_type */
 {
 #line 276 "./mql.yxx"
 ;
-#line 1854 "./mql.c"
+#line 1855 "./mql.c"
 }
       break;
     case 195: /* opt_feature_declaration_list */
@@ -1859,7 +1860,7 @@ delete((mqlyypminor->mqlyy568));
 {
 #line 298 "./mql.yxx"
 delete((mqlyypminor->mqlyy385));
-#line 1863 "./mql.c"
+#line 1864 "./mql.c"
 }
       break;
     case 199: /* feature_type */
@@ -1867,7 +1868,7 @@ delete((mqlyypminor->mqlyy385));
 {
 #line 320 "./mql.yxx"
 delete((mqlyypminor->mqlyy187));
-#line 1871 "./mql.c"
+#line 1872 "./mql.c"
 }
       break;
     case 200: /* default_specification */
@@ -1875,7 +1876,7 @@ delete((mqlyypminor->mqlyy187));
 {
 #line 378 "./mql.yxx"
 delete((mqlyypminor->mqlyy475));
-#line 1879 "./mql.c"
+#line 1880 "./mql.c"
 }
       break;
     case 204: /* opt_string_length */
@@ -1885,7 +1886,7 @@ delete((mqlyypminor->mqlyy475));
 {
 #line 370 "./mql.yxx"
 ;
-#line 1889 "./mql.c"
+#line 1890 "./mql.c"
 }
       break;
     case 207: /* feature_update_list */
@@ -1893,7 +1894,7 @@ delete((mqlyypminor->mqlyy475));
 {
 #line 403 "./mql.yxx"
 delete((mqlyypminor->mqlyy550));
-#line 1897 "./mql.c"
+#line 1898 "./mql.c"
 }
       break;
     case 210: /* monad_specification */
@@ -1907,7 +1908,7 @@ delete((mqlyypminor->mqlyy550));
 {
 #line 1018 "./mql.yxx"
 delete((mqlyypminor->mqlyy538));
-#line 1911 "./mql.c"
+#line 1912 "./mql.c"
 }
       break;
     case 212: /* id_ds_specification */
@@ -1916,21 +1917,21 @@ delete((mqlyypminor->mqlyy538));
 {
 #line 1119 "./mql.yxx"
 delete((mqlyypminor->mqlyy243));
-#line 1920 "./mql.c"
+#line 1921 "./mql.c"
 }
       break;
     case 213: /* monad_set_chain */
 {
 #line 464 "./mql.yxx"
 delete((mqlyypminor->mqlyy207));
-#line 1927 "./mql.c"
+#line 1928 "./mql.c"
 }
       break;
     case 215: /* monad_set_operator */
 {
 #line 472 "./mql.yxx"
 ;
-#line 1934 "./mql.c"
+#line 1935 "./mql.c"
 }
       break;
     case 217: /* monad_set_name_list */
@@ -1939,14 +1940,14 @@ delete((mqlyypminor->mqlyy207));
 {
 #line 548 "./mql.yxx"
 delete((mqlyypminor->mqlyy368));
-#line 1943 "./mql.c"
+#line 1944 "./mql.c"
 }
       break;
     case 218: /* monad_set_name */
 {
 #line 543 "./mql.yxx"
 deleteToken((mqlyypminor->mqlyy0));
-#line 1950 "./mql.c"
+#line 1951 "./mql.c"
 }
       break;
     case 221: /* ec_declaration_list */
@@ -1954,21 +1955,21 @@ deleteToken((mqlyypminor->mqlyy0));
 {
 #line 576 "./mql.yxx"
 delete((mqlyypminor->mqlyy173));
-#line 1958 "./mql.c"
+#line 1959 "./mql.c"
 }
       break;
     case 224: /* ec_name */
 {
 #line 599 "./mql.yxx"
  deleteToken((mqlyypminor->mqlyy0));  
-#line 1965 "./mql.c"
+#line 1966 "./mql.c"
 }
       break;
     case 225: /* opt_ec_initialization */
 {
 #line 603 "./mql.yxx"
 delete((mqlyypminor->mqlyy624));
-#line 1972 "./mql.c"
+#line 1973 "./mql.c"
 }
       break;
     case 227: /* ec_update_list */
@@ -1976,7 +1977,7 @@ delete((mqlyypminor->mqlyy624));
 {
 #line 620 "./mql.yxx"
 delete((mqlyypminor->mqlyy338));
-#line 1980 "./mql.c"
+#line 1981 "./mql.c"
 }
       break;
     case 233: /* select_clause */
@@ -1984,21 +1985,21 @@ delete((mqlyypminor->mqlyy338));
 {
 #line 698 "./mql.yxx"
 ;
-#line 1988 "./mql.c"
+#line 1989 "./mql.c"
 }
       break;
     case 235: /* with_max_range_clause */
 {
 #line 757 "./mql.yxx"
 delete((mqlyypminor->mqlyy374));
-#line 1995 "./mql.c"
+#line 1996 "./mql.c"
 }
       break;
     case 236: /* returning_clause */
 {
 #line 769 "./mql.yxx"
 delete((mqlyypminor->mqlyy621));
-#line 2002 "./mql.c"
+#line 2003 "./mql.c"
 }
       break;
     case 237: /* where_clause */
@@ -2007,14 +2008,14 @@ delete((mqlyypminor->mqlyy621));
 {
 #line 810 "./mql.yxx"
 delete((mqlyypminor->mqlyy367));
-#line 2011 "./mql.c"
+#line 2012 "./mql.c"
 }
       break;
     case 244: /* using_range_clause */
 {
 #line 784 "./mql.yxx"
 delete((mqlyypminor->mqlyy222));
-#line 2018 "./mql.c"
+#line 2019 "./mql.c"
 }
       break;
     case 246: /* single_monad_specification */
@@ -2023,7 +2024,7 @@ delete((mqlyypminor->mqlyy222));
 {
 #line 825 "./mql.yxx"
 ;
-#line 2027 "./mql.c"
+#line 2028 "./mql.c"
 }
       break;
     case 248: /* aggregate_feature_list */
@@ -2031,7 +2032,7 @@ delete((mqlyypminor->mqlyy222));
 {
 #line 867 "./mql.yxx"
 delete((mqlyypminor->mqlyy354));
-#line 2035 "./mql.c"
+#line 2036 "./mql.c"
 }
       break;
     case 250: /* feature_constraints */
@@ -2039,7 +2040,7 @@ delete((mqlyypminor->mqlyy354));
 {
 #line 1403 "./mql.yxx"
 delete((mqlyypminor->mqlyy168));
-#line 2043 "./mql.c"
+#line 2044 "./mql.c"
 }
       break;
     case 252: /* aggregate_feature_comparison */
@@ -2047,28 +2048,28 @@ delete((mqlyypminor->mqlyy168));
 {
 #line 890 "./mql.yxx"
 delete((mqlyypminor->mqlyy526));
-#line 2051 "./mql.c"
+#line 2052 "./mql.c"
 }
       break;
     case 253: /* comparison_operator */
 {
 #line 1459 "./mql.yxx"
 ;
-#line 2058 "./mql.c"
+#line 2059 "./mql.c"
 }
       break;
     case 254: /* value */
 {
 #line 1473 "./mql.yxx"
 delete((mqlyypminor->mqlyy300));
-#line 2065 "./mql.c"
+#line 2066 "./mql.c"
 }
       break;
     case 256: /* list_of_integer */
 {
 #line 1092 "./mql.yxx"
 delete((mqlyypminor->mqlyy183));
-#line 2072 "./mql.c"
+#line 2073 "./mql.c"
 }
       break;
     case 257: /* feature_list */
@@ -2077,7 +2078,7 @@ delete((mqlyypminor->mqlyy183));
 {
 #line 1265 "./mql.yxx"
 delete((mqlyypminor->mqlyy218));
-#line 2081 "./mql.c"
+#line 2082 "./mql.c"
 }
       break;
     case 260: /* with_id_d_specification */
@@ -2085,7 +2086,7 @@ delete((mqlyypminor->mqlyy218));
 {
 #line 1022 "./mql.yxx"
 ;
-#line 2089 "./mql.c"
+#line 2090 "./mql.c"
 }
       break;
     case 261: /* object_creation_specification */
@@ -2093,7 +2094,7 @@ delete((mqlyypminor->mqlyy218));
 {
 #line 1037 "./mql.yxx"
 delete((mqlyypminor->mqlyy389));
-#line 2097 "./mql.c"
+#line 2098 "./mql.c"
 }
       break;
     case 263: /* opt_list_of_feature_assignments */
@@ -2102,7 +2103,7 @@ delete((mqlyypminor->mqlyy389));
 {
 #line 1046 "./mql.yxx"
 delete((mqlyypminor->mqlyy432));
-#line 2106 "./mql.c"
+#line 2107 "./mql.c"
 }
       break;
     case 269: /* object_creation_list */
@@ -2110,7 +2111,7 @@ delete((mqlyypminor->mqlyy432));
 {
 #line 1156 "./mql.yxx"
 delete((mqlyypminor->mqlyy481));
-#line 2114 "./mql.c"
+#line 2115 "./mql.c"
 }
       break;
     case 277: /* blocks */
@@ -2118,49 +2119,49 @@ delete((mqlyypminor->mqlyy481));
 {
 #line 1300 "./mql.yxx"
 delete((mqlyypminor->mqlyy545));
-#line 2122 "./mql.c"
+#line 2123 "./mql.c"
 }
       break;
     case 278: /* block_string */
 {
 #line 1332 "./mql.yxx"
 delete((mqlyypminor->mqlyy421));
-#line 2129 "./mql.c"
+#line 2130 "./mql.c"
 }
       break;
     case 279: /* unordered_group */
 {
 #line 1512 "./mql.yxx"
 delete((mqlyypminor->mqlyy128));
-#line 2136 "./mql.c"
+#line 2137 "./mql.c"
 }
       break;
     case 280: /* block_string0 */
 {
 #line 1308 "./mql.yxx"
 delete((mqlyypminor->mqlyy541));
-#line 2143 "./mql.c"
+#line 2144 "./mql.c"
 }
       break;
     case 281: /* block */
 {
 #line 1503 "./mql.yxx"
 delete((mqlyypminor->mqlyy534));
-#line 2150 "./mql.c"
+#line 2151 "./mql.c"
 }
       break;
     case 282: /* block_string1 */
 {
 #line 1315 "./mql.yxx"
 delete((mqlyypminor->mqlyy594));
-#line 2157 "./mql.c"
+#line 2158 "./mql.c"
 }
       break;
     case 284: /* block_string2 */
 {
 #line 1322 "./mql.yxx"
 delete((mqlyypminor->mqlyy23));
-#line 2164 "./mql.c"
+#line 2165 "./mql.c"
 }
       break;
     case 289: /* retrieval */
@@ -2168,63 +2169,63 @@ delete((mqlyypminor->mqlyy23));
 {
 #line 1362 "./mql.yxx"
 ;
-#line 2172 "./mql.c"
+#line 2173 "./mql.c"
 }
       break;
     case 290: /* firstlast */
 {
 #line 1369 "./mql.yxx"
 ;
-#line 2179 "./mql.c"
+#line 2180 "./mql.c"
 }
       break;
     case 291: /* monad_set_relation_clause */
 {
 #line 1376 "./mql.yxx"
 delete((mqlyypminor->mqlyy409));
-#line 2186 "./mql.c"
+#line 2187 "./mql.c"
 }
       break;
     case 292: /* monad_set_relation_operation */
 {
 #line 1385 "./mql.yxx"
 
-#line 2193 "./mql.c"
+#line 2194 "./mql.c"
 }
       break;
     case 293: /* universe_or_substrate */
 {
 #line 1395 "./mql.yxx"
  
-#line 2200 "./mql.c"
+#line 2201 "./mql.c"
 }
       break;
     case 295: /* fterm */
 {
 #line 1415 "./mql.yxx"
 delete((mqlyypminor->mqlyy1));
-#line 2207 "./mql.c"
+#line 2208 "./mql.c"
 }
       break;
     case 296: /* ffactor */
 {
 #line 1420 "./mql.yxx"
 delete((mqlyypminor->mqlyy108));
-#line 2214 "./mql.c"
+#line 2215 "./mql.c"
 }
       break;
     case 298: /* computed_feature_name */
 {
 #line 1453 "./mql.yxx"
  delete((mqlyypminor->mqlyy485)); 
-#line 2221 "./mql.c"
+#line 2222 "./mql.c"
 }
       break;
     case 299: /* object_reference_usage */
 {
 #line 1489 "./mql.yxx"
 delete((mqlyypminor->mqlyy366));
-#line 2228 "./mql.c"
+#line 2229 "./mql.c"
 }
       break;
     case 302: /* object_block */
@@ -2232,35 +2233,35 @@ delete((mqlyypminor->mqlyy366));
 {
 #line 1561 "./mql.yxx"
 delete((mqlyypminor->mqlyy461));
-#line 2236 "./mql.c"
+#line 2237 "./mql.c"
 }
       break;
     case 303: /* power */
 {
 #line 1590 "./mql.yxx"
 delete((mqlyypminor->mqlyy572));
-#line 2243 "./mql.c"
+#line 2244 "./mql.c"
 }
       break;
     case 304: /* opt_gap_block */
 {
 #line 1533 "./mql.yxx"
 delete((mqlyypminor->mqlyy289));
-#line 2250 "./mql.c"
+#line 2251 "./mql.c"
 }
       break;
     case 305: /* gap_block */
 {
 #line 1547 "./mql.yxx"
 delete((mqlyypminor->mqlyy138));
-#line 2257 "./mql.c"
+#line 2258 "./mql.c"
 }
       break;
     case 307: /* object_block_string */
 {
 #line 1520 "./mql.yxx"
 delete((mqlyypminor->mqlyy324));
-#line 2264 "./mql.c"
+#line 2265 "./mql.c"
 }
       break;
 /********* End destructor definitions *****************************************/
@@ -2386,15 +2387,18 @@ static MQLYYACTIONTYPE mqlyy_find_shift_action(
   do{
     i = mqlyy_shift_ofst[stateno];
     assert( i>=0 );
-    /* assert( i+MQLYYNTOKEN<=(int)MQLYY_NLOOKAHEAD ); */
+    assert( i<=MQLYY_ACTTAB_COUNT );
+    assert( i+MQLYYNTOKEN<=(int)MQLYY_NLOOKAHEAD );
     assert( iLookAhead!=MQLYYNOCODE );
     assert( iLookAhead < MQLYYNTOKEN );
     i += iLookAhead;
-    if( i>=MQLYY_NLOOKAHEAD || mqlyy_lookahead[i]!=iLookAhead ){
+    assert( i<(int)MQLYY_NLOOKAHEAD );
+    if( mqlyy_lookahead[i]!=iLookAhead ){
 #ifdef MQLYYFALLBACK
       MQLYYCODETYPE iFallback;            /* Fallback token */
-      if( iLookAhead<sizeof(mqlyyFallback)/sizeof(mqlyyFallback[0])
-             && (iFallback = mqlyyFallback[iLookAhead])!=0 ){
+      assert( iLookAhead<sizeof(mqlyyFallback)/sizeof(mqlyyFallback[0]) );
+      iFallback = mqlyyFallback[iLookAhead];
+      if( iFallback!=0 ){
 #ifndef NDEBUG
         if( mqlyyTraceFILE ){
           fprintf(mqlyyTraceFILE, "%sFALLBACK %s => %s\n",
@@ -2409,16 +2413,8 @@ static MQLYYACTIONTYPE mqlyy_find_shift_action(
 #ifdef MQLYYWILDCARD
       {
         int j = i - iLookAhead + MQLYYWILDCARD;
-        if( 
-#if MQLYY_SHIFT_MIN+MQLYYWILDCARD<0
-          j>=0 &&
-#endif
-#if MQLYY_SHIFT_MAX+MQLYYWILDCARD>=MQLYY_ACTTAB_COUNT
-          j<MQLYY_ACTTAB_COUNT &&
-#endif
-          j<(int)(sizeof(mqlyy_lookahead)/sizeof(mqlyy_lookahead[0])) &&
-          mqlyy_lookahead[j]==MQLYYWILDCARD && iLookAhead>0
-        ){
+        assert( j<(int)(sizeof(mqlyy_lookahead)/sizeof(mqlyy_lookahead[0])) );
+        if( mqlyy_lookahead[j]==MQLYYWILDCARD && iLookAhead>0 ){
 #ifndef NDEBUG
           if( mqlyyTraceFILE ){
             fprintf(mqlyyTraceFILE, "%sWILDCARD %s => %s\n",
@@ -2432,6 +2428,7 @@ static MQLYYACTIONTYPE mqlyy_find_shift_action(
 #endif /* MQLYYWILDCARD */
       return mqlyy_default[stateno];
     }else{
+      assert( i>=0 && i<sizeof(mqlyy_action)/sizeof(mqlyy_action[0]) );
       return mqlyy_action[i];
     }
   }while(1);
@@ -2487,7 +2484,7 @@ static void mqlyyStackOverflow(mqlyyParser *mqlyypParser){
   std::string errMsg = "stack overflow. Bailing out...\n";
   pEE->pError->appendError(errMsg);
    
-#line 2491 "./mql.c"
+#line 2488 "./mql.c"
 /******** End %stack_overflow code ********************************************/
    MQLParserARG_STORE /* Suppress warning about unused %extra_argument var */
    MQLParserCTX_STORE
@@ -3389,12 +3386,15 @@ static MQLYYACTIONTYPE mqlyy_reduce(
   if( mqlyyTraceFILE && mqlyyruleno<(int)(sizeof(mqlyyRuleName)/sizeof(mqlyyRuleName[0])) ){
     mqlyysize = mqlyyRuleInfoNRhs[mqlyyruleno];
     if( mqlyysize ){
-      fprintf(mqlyyTraceFILE, "%sReduce %d [%s], go to state %d.\n",
+      fprintf(mqlyyTraceFILE, "%sReduce %d [%s]%s, pop back to state %d.\n",
         mqlyyTracePrompt,
-        mqlyyruleno, mqlyyRuleName[mqlyyruleno], mqlyymsp[mqlyysize].stateno);
+        mqlyyruleno, mqlyyRuleName[mqlyyruleno],
+        mqlyyruleno<MQLYYNRULE_WITH_ACTION ? "" : " without external action",
+        mqlyymsp[mqlyysize].stateno);
     }else{
-      fprintf(mqlyyTraceFILE, "%sReduce %d [%s].\n",
-        mqlyyTracePrompt, mqlyyruleno, mqlyyRuleName[mqlyyruleno]);
+      fprintf(mqlyyTraceFILE, "%sReduce %d [%s]%s.\n",
+        mqlyyTracePrompt, mqlyyruleno, mqlyyRuleName[mqlyyruleno],
+        mqlyyruleno<MQLYYNRULE_WITH_ACTION ? "" : " without external action");
     }
   }
 #endif /* NDEBUG */
@@ -6207,11 +6207,10 @@ void MQLParser(
 */
 int MQLParserFallback(int iToken){
 #ifdef MQLYYFALLBACK
-  if( iToken<(int)(sizeof(mqlyyFallback)/sizeof(mqlyyFallback[0])) ){
-    return mqlyyFallback[iToken];
-  }
+  assert( iToken<(int)(sizeof(mqlyyFallback)/sizeof(mqlyyFallback[0])) );
+  return mqlyyFallback[iToken];
 #else
   (void)iToken;
-#endif
   return 0;
+#endif
 }

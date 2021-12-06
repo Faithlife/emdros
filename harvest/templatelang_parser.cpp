@@ -170,6 +170,7 @@ typedef union {
 #define TemplateLangParserCTX_STORE
 #define TMPLGYYNSTATE             217
 #define TMPLGYYNRULE              107
+#define TMPLGYYNRULE_WITH_ACTION  107
 #define TMPLGYYNTOKEN             61
 #define TMPLGYY_MAX_SHIFT         216
 #define TMPLGYY_MIN_SHIFTREDUCE   323
@@ -959,14 +960,14 @@ static void tmplgyy_destructor(
  (tmplgyypminor->tmplgyy0)->clear(); delete (tmplgyypminor->tmplgyy0);
                     UNUSED(pEE); // Just to silence a warning
 		  
-#line 963 "./templatelang.c"
+#line 964 "./templatelang.c"
 }
       break;
     case 61: /* top_value */
 {
 #line 57 "./templatelang.yxx"
  delete((tmplgyypminor->tmplgyy95)); 
-#line 970 "./templatelang.c"
+#line 971 "./templatelang.c"
 }
       break;
     case 62: /* template_list */
@@ -975,175 +976,175 @@ static void tmplgyy_destructor(
 {
 #line 61 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy95));
-#line 979 "./templatelang.c"
+#line 980 "./templatelang.c"
 }
       break;
     case 64: /* template_string */
 {
 #line 351 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy52));
-#line 986 "./templatelang.c"
+#line 987 "./templatelang.c"
 }
       break;
     case 65: /* template_if */
 {
 #line 263 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy22));
-#line 993 "./templatelang.c"
+#line 994 "./templatelang.c"
 }
       break;
     case 66: /* template_listappend */
 {
 #line 273 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy62));
-#line 1000 "./templatelang.c"
+#line 1001 "./templatelang.c"
 }
       break;
     case 67: /* template_listappend_end */
 {
 #line 280 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy70));
-#line 1007 "./templatelang.c"
+#line 1008 "./templatelang.c"
 }
       break;
     case 68: /* template_namedsetadd */
 {
 #line 285 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy160));
-#line 1014 "./templatelang.c"
+#line 1015 "./templatelang.c"
 }
       break;
     case 69: /* template_namedsetadd_end */
 {
 #line 290 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy92));
-#line 1021 "./templatelang.c"
+#line 1022 "./templatelang.c"
 }
       break;
     case 70: /* template_namedsetremove */
 {
 #line 295 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy77));
-#line 1028 "./templatelang.c"
+#line 1029 "./templatelang.c"
 }
       break;
     case 71: /* template_namedsetremove_end */
 {
 #line 300 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy73));
-#line 1035 "./templatelang.c"
+#line 1036 "./templatelang.c"
 }
       break;
     case 72: /* template_setvarnow */
 {
 #line 306 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy16));
-#line 1042 "./templatelang.c"
+#line 1043 "./templatelang.c"
 }
       break;
     case 73: /* template_setvarsubstring */
 {
 #line 311 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy93));
-#line 1049 "./templatelang.c"
+#line 1050 "./templatelang.c"
 }
       break;
     case 74: /* template_setvar */
 {
 #line 331 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy81));
-#line 1056 "./templatelang.c"
+#line 1057 "./templatelang.c"
 }
       break;
     case 75: /* template_setvar_end */
 {
 #line 337 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy29));
-#line 1063 "./templatelang.c"
+#line 1064 "./templatelang.c"
 }
       break;
     case 76: /* template_emitvar */
 {
 #line 343 "./templatelang.yxx"
 delete((tmplgyypminor->tmplgyy107));
-#line 1070 "./templatelang.c"
+#line 1071 "./templatelang.c"
 }
       break;
     case 77: /* template_setnixing */
 {
 #line 185 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy80));
-#line 1077 "./templatelang.c"
+#line 1078 "./templatelang.c"
 }
       break;
     case 78: /* template_dictlookup_feature */
 {
 #line 154 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy85));
-#line 1084 "./templatelang.c"
+#line 1085 "./templatelang.c"
 }
       break;
     case 79: /* template_dictlookup_var */
 {
 #line 165 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy90));
-#line 1091 "./templatelang.c"
+#line 1092 "./templatelang.c"
 }
       break;
     case 80: /* template_dictlookup_counter */
 {
 #line 177 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy45));
-#line 1098 "./templatelang.c"
+#line 1099 "./templatelang.c"
 }
       break;
     case 81: /* template_if_featureequal */
 {
 #line 202 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy10));
-#line 1105 "./templatelang.c"
+#line 1106 "./templatelang.c"
 }
       break;
     case 82: /* template_if_varequal */
 {
 #line 209 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy108));
-#line 1112 "./templatelang.c"
+#line 1113 "./templatelang.c"
 }
       break;
     case 83: /* template_if_listempty */
 {
 #line 220 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy147));
-#line 1119 "./templatelang.c"
+#line 1120 "./templatelang.c"
 }
       break;
     case 84: /* template_if_namedsetempty */
 {
 #line 227 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy4));
-#line 1126 "./templatelang.c"
+#line 1127 "./templatelang.c"
 }
       break;
     case 85: /* template_if_hasattrib */
 {
 #line 234 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy68));
-#line 1133 "./templatelang.c"
+#line 1134 "./templatelang.c"
 }
       break;
     case 86: /* template_if_attribequal */
 {
 #line 241 "./templatelang.yxx"
 delete ((tmplgyypminor->tmplgyy156));
-#line 1140 "./templatelang.c"
+#line 1141 "./templatelang.c"
 }
       break;
     case 88: /* signed_integer */
 {
 #line 395 "./templatelang.yxx"
 ;
-#line 1147 "./templatelang.c"
+#line 1148 "./templatelang.c"
 }
       break;
 /********* End destructor definitions *****************************************/
@@ -1269,15 +1270,18 @@ static TMPLGYYACTIONTYPE tmplgyy_find_shift_action(
   do{
     i = tmplgyy_shift_ofst[stateno];
     assert( i>=0 );
-    /* assert( i+TMPLGYYNTOKEN<=(int)TMPLGYY_NLOOKAHEAD ); */
+    assert( i<=TMPLGYY_ACTTAB_COUNT );
+    assert( i+TMPLGYYNTOKEN<=(int)TMPLGYY_NLOOKAHEAD );
     assert( iLookAhead!=TMPLGYYNOCODE );
     assert( iLookAhead < TMPLGYYNTOKEN );
     i += iLookAhead;
-    if( i>=TMPLGYY_NLOOKAHEAD || tmplgyy_lookahead[i]!=iLookAhead ){
+    assert( i<(int)TMPLGYY_NLOOKAHEAD );
+    if( tmplgyy_lookahead[i]!=iLookAhead ){
 #ifdef TMPLGYYFALLBACK
       TMPLGYYCODETYPE iFallback;            /* Fallback token */
-      if( iLookAhead<sizeof(tmplgyyFallback)/sizeof(tmplgyyFallback[0])
-             && (iFallback = tmplgyyFallback[iLookAhead])!=0 ){
+      assert( iLookAhead<sizeof(tmplgyyFallback)/sizeof(tmplgyyFallback[0]) );
+      iFallback = tmplgyyFallback[iLookAhead];
+      if( iFallback!=0 ){
 #ifndef NDEBUG
         if( tmplgyyTraceFILE ){
           fprintf(tmplgyyTraceFILE, "%sFALLBACK %s => %s\n",
@@ -1292,16 +1296,8 @@ static TMPLGYYACTIONTYPE tmplgyy_find_shift_action(
 #ifdef TMPLGYYWILDCARD
       {
         int j = i - iLookAhead + TMPLGYYWILDCARD;
-        if( 
-#if TMPLGYY_SHIFT_MIN+TMPLGYYWILDCARD<0
-          j>=0 &&
-#endif
-#if TMPLGYY_SHIFT_MAX+TMPLGYYWILDCARD>=TMPLGYY_ACTTAB_COUNT
-          j<TMPLGYY_ACTTAB_COUNT &&
-#endif
-          j<(int)(sizeof(tmplgyy_lookahead)/sizeof(tmplgyy_lookahead[0])) &&
-          tmplgyy_lookahead[j]==TMPLGYYWILDCARD && iLookAhead>0
-        ){
+        assert( j<(int)(sizeof(tmplgyy_lookahead)/sizeof(tmplgyy_lookahead[0])) );
+        if( tmplgyy_lookahead[j]==TMPLGYYWILDCARD && iLookAhead>0 ){
 #ifndef NDEBUG
           if( tmplgyyTraceFILE ){
             fprintf(tmplgyyTraceFILE, "%sWILDCARD %s => %s\n",
@@ -1315,6 +1311,7 @@ static TMPLGYYACTIONTYPE tmplgyy_find_shift_action(
 #endif /* TMPLGYYWILDCARD */
       return tmplgyy_default[stateno];
     }else{
+      assert( i>=0 && i<sizeof(tmplgyy_action)/sizeof(tmplgyy_action[0]) );
       return tmplgyy_action[i];
     }
   }while(1);
@@ -1688,12 +1685,15 @@ static TMPLGYYACTIONTYPE tmplgyy_reduce(
   if( tmplgyyTraceFILE && tmplgyyruleno<(int)(sizeof(tmplgyyRuleName)/sizeof(tmplgyyRuleName[0])) ){
     tmplgyysize = tmplgyyRuleInfoNRhs[tmplgyyruleno];
     if( tmplgyysize ){
-      fprintf(tmplgyyTraceFILE, "%sReduce %d [%s], go to state %d.\n",
+      fprintf(tmplgyyTraceFILE, "%sReduce %d [%s]%s, pop back to state %d.\n",
         tmplgyyTracePrompt,
-        tmplgyyruleno, tmplgyyRuleName[tmplgyyruleno], tmplgyymsp[tmplgyysize].stateno);
+        tmplgyyruleno, tmplgyyRuleName[tmplgyyruleno],
+        tmplgyyruleno<TMPLGYYNRULE_WITH_ACTION ? "" : " without external action",
+        tmplgyymsp[tmplgyysize].stateno);
     }else{
-      fprintf(tmplgyyTraceFILE, "%sReduce %d [%s].\n",
-        tmplgyyTracePrompt, tmplgyyruleno, tmplgyyRuleName[tmplgyyruleno]);
+      fprintf(tmplgyyTraceFILE, "%sReduce %d [%s]%s.\n",
+        tmplgyyTracePrompt, tmplgyyruleno, tmplgyyRuleName[tmplgyyruleno],
+        tmplgyyruleno<TMPLGYYNRULE_WITH_ACTION ? "" : " without external action");
     }
   }
 #endif /* NDEBUG */
@@ -2983,11 +2983,10 @@ void TemplateLangParser(
 */
 int TemplateLangParserFallback(int iToken){
 #ifdef TMPLGYYFALLBACK
-  if( iToken<(int)(sizeof(tmplgyyFallback)/sizeof(tmplgyyFallback[0])) ){
-    return tmplgyyFallback[iToken];
-  }
+  assert( iToken<(int)(sizeof(tmplgyyFallback)/sizeof(tmplgyyFallback[0])) );
+  return tmplgyyFallback[iToken];
 #else
   (void)iToken;
-#endif
   return 0;
+#endif
 }
